@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:Pizza_Shop": "node dist/pizza-shop/server/server.mjs",
-    "gcp-build":""
+    "heroku-postbuild": "ng build"
   },
   "private": true,
   "dependencies": {
