@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PizzaShopApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e86ec050c7c336a0f7970c3678009b779e386cf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7ddca534270119e2ddcfe048ec74a35df585675")]
 [assembly: System.Reflection.AssemblyProductAttribute("PizzaShopApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PizzaShopApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
