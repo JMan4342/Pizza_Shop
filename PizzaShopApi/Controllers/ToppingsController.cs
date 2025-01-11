@@ -3,6 +3,7 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace PizzaShopApi.Controllers;
 
@@ -36,10 +37,10 @@ public class ToppingsController : ControllerBase
         return new JsonResult(table);
     }
 
-    [HttpPost("add_topping")]
-    public JsonResult add_topping()
+    [HttpPost("add_topping/{toppingName}")]
+    public JsonResult add_topping(string toppingName)
     {
-        string query = "INSERT INTO Toppings VALUES ('" + "Ham" + "')";
+        string query = "INSERT INTO Toppings VALUES ('" + toppingName + "')";
         DataTable table = new DataTable();
         string SqlDatasource = _configuration.GetConnectionString("Pizza_Shop");
         SqlDataReader myReader;
@@ -53,13 +54,13 @@ public class ToppingsController : ControllerBase
             }
         }
 
-        return new JsonResult(table);
+        return new JsonResult("Added Successfully");
     }
 
-    [HttpPost("update_topping")]
-    public JsonResult update_topping()
+    [HttpPost("update_topping/{toppingName}/{toppingId}")]
+    public JsonResult update_topping(string toppingName, int toppingId)
     {
-        string query = "UPDATE Toppings SET ToppingName = '" + "Chedder" + "' WHERE ToppingID = " + "1";
+        string query = "UPDATE Toppings SET ToppingName = '" + toppingName + "' WHERE ToppingID = " + toppingId;
         DataTable table = new DataTable();
         string SqlDatasource = _configuration.GetConnectionString("Pizza_Shop");
         SqlDataReader myReader;
@@ -73,13 +74,13 @@ public class ToppingsController : ControllerBase
             }
         }
 
-        return new JsonResult(table);
+        return new JsonResult("Updated Successfully");
     }
 
-    [HttpDelete("delete_topping")]
-    public JsonResult delete_topping()
+    [HttpDelete("delete_topping/{toppingId}")]
+    public JsonResult delete_topping(int toppingId)
     {
-        string query = "DELETE FROM Toppings WHERE ToppingId = '" + "6" + "'";
+        string query = "DELETE FROM Toppings WHERE ToppingId = '" + toppingId + "'";
         DataTable table = new DataTable();
         string SqlDatasource = _configuration.GetConnectionString("Pizza_Shop");
         SqlDataReader myReader;
@@ -93,6 +94,6 @@ public class ToppingsController : ControllerBase
             }
         }
 
-        return new JsonResult(table);
+        return new JsonResult("Deleted Successfully");
     }
 }
