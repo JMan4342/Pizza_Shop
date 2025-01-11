@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DX+pu/QKLPY=",
+  "dgSpecHash": "bT9dZ/Wy3No=",
   "success": true,
-  "projectFilePath": "C:\\Users\\jgman\\PersonalProject\\Pizza_Shop\\Pizza_Shop\\PizzaShopApi\\PizzaShopApi.csproj",
+  "projectFilePath": "c:\\Users\\jgman\\PersonalProject\\Pizza_Shop\\Pizza_Shop\\PizzaShopApi\\PizzaShopApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jgman\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\jgman\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
