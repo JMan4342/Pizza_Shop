@@ -36,10 +36,10 @@ public class PizzasController : ControllerBase
         return new JsonResult(table);
     }
 
-    [HttpPost("add_pizza")]
-    public JsonResult add_pizza()
+    [HttpPost("add_pizza/{pizzaName}/{toppings}")]
+    public JsonResult add_pizza(string pizzaName, string toppings)
     {
-        string query = "INSERT INTO Pizzas VALUES ('" + "Pepperoni, Sausage, Ham" + "', '" + "Meat Fans" + "')";
+        string query = "INSERT INTO Pizzas VALUES ('" + toppings + "', '" + pizzaName + "')";
         DataTable table = new DataTable();
         string SqlDatasource = _configuration.GetConnectionString("Pizza_Shop");
         SqlDataReader myReader;
@@ -53,13 +53,13 @@ public class PizzasController : ControllerBase
             }
         }
 
-        return new JsonResult(table);
+        return new JsonResult("Added Successfully");
     }
 
-    [HttpPost("update_pizza")]
-    public JsonResult update_pizza()
+    [HttpPost("update_pizza/{pizzaName}/{toppings}/{pizzaId}")]
+    public JsonResult update_pizza(string pizzaName, string toppings, int pizzaId)
     {
-        string query = "UPDATE Pizzas SET PizzaName = '" + "Classic Meat Pizza" + "', Toppings = '" + "Pepperoni, Sausage" + "' WHERE PizzaID = " + "3";
+        string query = "UPDATE Pizzas SET PizzaName = '" + pizzaName + "', Toppings = '" + toppings + "' WHERE PizzaID = " + pizzaId;
         DataTable table = new DataTable();
         string SqlDatasource = _configuration.GetConnectionString("Pizza_Shop");
         SqlDataReader myReader;
@@ -73,7 +73,7 @@ public class PizzasController : ControllerBase
             }
         }
 
-        return new JsonResult(table);
+        return new JsonResult("Updated Successfully");
     }
 
     [HttpDelete("delete_pizza")]
@@ -93,6 +93,6 @@ public class PizzasController : ControllerBase
             }
         }
 
-        return new JsonResult(table);
+        return new JsonResult("Deleted Successfully");
     }
 }
