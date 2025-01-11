@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\jgman\\PersonalProject\\Pizza_Shop\\Pizza_Shop\\PizzaShopApi\\PizzaShopApi.csproj": {}
+    "C:\\Users\\jgman\\PersonalProject\\Pizza_Shop\\Pizza_Shop\\PizzaShopApi\\PizzaShopApi.csproj": {}
   },
   "projects": {
-    "c:\\Users\\jgman\\PersonalProject\\Pizza_Shop\\Pizza_Shop\\PizzaShopApi\\PizzaShopApi.csproj": {
+    "C:\\Users\\jgman\\PersonalProject\\Pizza_Shop\\Pizza_Shop\\PizzaShopApi\\PizzaShopApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\jgman\\PersonalProject\\Pizza_Shop\\Pizza_Shop\\PizzaShopApi\\PizzaShopApi.csproj",
+        "projectUniqueName": "C:\\Users\\jgman\\PersonalProject\\Pizza_Shop\\Pizza_Shop\\PizzaShopApi\\PizzaShopApi.csproj",
         "projectName": "PizzaShopApi",
-        "projectPath": "c:\\Users\\jgman\\PersonalProject\\Pizza_Shop\\Pizza_Shop\\PizzaShopApi\\PizzaShopApi.csproj",
+        "projectPath": "C:\\Users\\jgman\\PersonalProject\\Pizza_Shop\\Pizza_Shop\\PizzaShopApi\\PizzaShopApi.csproj",
         "packagesPath": "C:\\Users\\jgman\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\jgman\\PersonalProject\\Pizza_Shop\\Pizza_Shop\\PizzaShopApi\\obj\\",
+        "outputPath": "C:\\Users\\jgman\\PersonalProject\\Pizza_Shop\\Pizza_Shop\\PizzaShopApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jgman\\AppData\\Roaming\\NuGet\\NuGet.Config"
