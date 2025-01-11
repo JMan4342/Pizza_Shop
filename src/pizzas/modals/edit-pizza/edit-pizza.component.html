@@ -20,6 +20,7 @@
     </div>
     <ng-template pTemplate="footer">
       <div class="flex gap-3 mt-1">
+        <p-toast />
         <p-button
           label="Submit"
           severity="success"
@@ -27,8 +28,6 @@
           styleClass="w-full"
           (onClick)="updatePizza()"
         />
-      </div>
-      <div class="flex gap-3 mt-1">
         <p-button
           label="Close"
           severity="secondary"

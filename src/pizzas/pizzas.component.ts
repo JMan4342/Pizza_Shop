@@ -9,6 +9,7 @@ import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { NewPizzaComponent } from './modals/new-pizza/new-pizza.component';
 import { EditPizzaComponent } from './modals/edit-pizza/edit-pizza.component';
+import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
   selector: 'app-pizzas',
@@ -21,7 +22,8 @@ import { EditPizzaComponent } from './modals/edit-pizza/edit-pizza.component';
     ButtonModule,
     DialogModule,
     NewPizzaComponent,
-    EditPizzaComponent],
+    EditPizzaComponent,
+    TooltipModule ],
   templateUrl: './pizzas.component.html',
   styleUrl: './pizzas.component.css'
 })
@@ -60,5 +62,14 @@ export class PizzasComponent implements OnInit {
     this.editPizza = pizza;
     this.modalShown = 2;
     this.modalVisible = true;
+  }
+
+  deletePizza(pizza: Pizza): void {
+    this.pizzasService.deletePizza(pizza.pizzaId).subscribe({
+      next: result => {
+        this.getPizzas(true);
+      },
+      error: err => console.log(err),
+    });
   }
 }

@@ -46,4 +46,16 @@ export class PizzasService {
       })
     )
   }
+
+  deletePizza(pizzaId: number): Observable<any> {
+    return this.http
+    .delete(
+      this.apiUrl + "delete_pizza/" + pizzaId
+    )
+    .pipe(
+      map((result) => {
+        return result
+      })
+    )
+  }
 }

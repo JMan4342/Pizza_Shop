@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { sortBy as _sortBy } from 'lodash';
 import { FormsModule } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
@@ -18,11 +21,14 @@ import { Topping } from '../../../shared/classes/topping';
     ButtonModule,
     InputTextModule,
     MultiSelectModule,
+    ToastModule,
   ],
+  providers: [MessageService],
   templateUrl: './edit-pizza.component.html',
   styleUrl: './edit-pizza.component.css',
 })
 export class EditPizzaComponent {
+  @Input() inPizzas: Pizza[] = [];
   @Input() inPizzaDetail = new Pizza();
   @Output() outModalState = new EventEmitter<number>();
   @Output() outModalVisible = new EventEmitter<boolean>();
@@ -34,7 +40,8 @@ export class EditPizzaComponent {
 
   constructor(
     private pizzasService: PizzasService,
-    private toppingsService: ToppingsService
+    private toppingsService: ToppingsService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +49,9 @@ export class EditPizzaComponent {
       next: (results) => {
         console.log(results);
         this.availableToppings = results;
+        this.availableToppings = _sortBy(this.availableToppings, [
+          'toppingName',
+        ]);
         this.selectedToppings = [];
         let prevSelectToppings = [];
         prevSelectToppings = this.inPizzaDetail.toppings.split(', ');
@@ -60,28 +70,43 @@ export class EditPizzaComponent {
   updatePizza(): void {
     let selectedToppingsString = '';
     let selectedToppingsNames = [];
+    this.selectedToppings = _sortBy(this.selectedToppings, ['toppingName']);
     for (const t of this.selectedToppings) {
       selectedToppingsNames.push(t.toppingName);
     }
     selectedToppingsString = selectedToppingsNames.join(', ');
-    this.pizzasService
-      .updatePizza(
-        this.pizzaName,
-        selectedToppingsString,
-        this.inPizzaDetail.pizzaId
-      )
-      .subscribe({
-        next: (results) => {
-          this.closeModal(true);
-        },
-        error: (err) => console.log(err),
+    if (
+      this.inPizzas.filter(
+        (x) =>
+          x.pizzaName.toLowerCase() == this.pizzaName.toLowerCase() ||
+          x.toppings.toLowerCase() == selectedToppingsString.toLowerCase()
+      ).length == 0
+    ) {
+      this.pizzasService
+        .updatePizza(
+          this.pizzaName,
+          selectedToppingsString,
+          this.inPizzaDetail.pizzaId
+        )
+        .subscribe({
+          next: (results) => {
+            this.closeModal(true);
+          },
+          error: (err) => console.log(err),
+        });
+    } else {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Not Created',
+        detail: 'Pizza Already Exists',
       });
+    }
   }
 
   closeModal(pizzaAdded: boolean): void {
     if (pizzaAdded) {
       this.repullPizzas.emit(true);
-    };
+    }
     this.outModalState.emit(0);
     this.outModalVisible.emit(false);
   }

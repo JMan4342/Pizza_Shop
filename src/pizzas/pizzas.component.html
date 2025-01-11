@@ -17,6 +17,8 @@
             [raised]="true"
             severity="success"
             size="small"
+            pTooltip="Add New Pizza"
+            tooltipPosition="top"
             (onClick)="addPizzaModal()"
           />
         </th>
@@ -34,6 +36,8 @@
             [raised]="true"
             severity="success"
             size="small"
+            pTooltip="Edit Pizza"
+            tooltipPosition="top"
             (onClick)="editPizzaModal(pizza)"
           />
           <p-button
@@ -43,6 +47,9 @@
             [raised]="true"
             severity="danger"
             size="small"
+            pTooltip="Delete Pizza"
+            tooltipPosition="top"
+            (onClick)="deletePizza(pizza)"
           />
         </td>
       </tr>
@@ -55,12 +62,14 @@
   <ng-template pTemplate="headless">
     <app-new-pizza
       *ngIf="modalShown == 1"
+      [inPizzas]="pizzas"
       (outModalState)="modalShown = $event"
       (outModalVisible)="modalVisible = $event"
       (repullPizzas)="getPizzas($event)"
     ></app-new-pizza>
     <app-edit-pizza
       *ngIf="modalShown == 2"
+      [inPizzas]="pizzas"
       [inPizzaDetail]="editPizza"
       (outModalState)="modalShown = $event"
       (outModalVisible)="modalVisible = $event"

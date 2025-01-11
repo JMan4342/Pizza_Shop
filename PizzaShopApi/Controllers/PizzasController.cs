@@ -76,10 +76,10 @@ public class PizzasController : ControllerBase
         return new JsonResult("Updated Successfully");
     }
 
-    [HttpDelete("delete_pizza")]
-    public JsonResult delete_pizza()
+    [HttpDelete("delete_pizza/{pizzaId}")]
+    public JsonResult delete_pizza(int pizzaId)
     {
-        string query = "DELETE FROM Pizzas WHERE PizzaId = '" + "5" + "'";
+        string query = "DELETE FROM Pizzas WHERE PizzaId = '" + pizzaId + "'";
         DataTable table = new DataTable();
         string SqlDatasource = _configuration.GetConnectionString("Pizza_Shop");
         SqlDataReader myReader;
