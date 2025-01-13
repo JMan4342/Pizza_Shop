@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { sortBy as _sortBy } from 'lodash';
+import { sortBy as _sortBy } from 'lodash-es';
 import { ToppingsService } from './toppings.service';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
