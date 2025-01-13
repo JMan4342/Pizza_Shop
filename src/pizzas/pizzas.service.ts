@@ -7,7 +7,7 @@ import { Pizza } from '../shared/classes/pizza';
   providedIn: 'root'
 })
 export class PizzasService {
-  apiUrl='http://localhost:8000/'
+  apiUrl='https://localhost:7297/'
 
   constructor(private http: HttpClient) { }
 
