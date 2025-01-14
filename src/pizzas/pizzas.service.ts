@@ -7,7 +7,7 @@ import { Pizza } from '../shared/classes/pizza';
   providedIn: 'root'
 })
 export class PizzasService {
-  apiUrl= process.env['PORT'] || 'https://localhost:7297/';
+  apiUrl= 'https://localhost:7297/'
 
   constructor(private http: HttpClient) { }
 
