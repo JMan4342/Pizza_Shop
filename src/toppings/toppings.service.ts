@@ -7,7 +7,7 @@ import { map, Observable } from 'rxjs';
 })
 export class ToppingsService {
 
-  apiUrl='https://localhost:7297/'
+  apiUrl= process.env['PORT'] || 'https://localhost:7297/';
 
   constructor(private http: HttpClient) { }
 
